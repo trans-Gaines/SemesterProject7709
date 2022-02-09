@@ -16,4 +16,69 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(SemesterProject7709)
+library(dplyr)
 ```
+**1. Download the Lab1_data.xlsx data file. This file contains fake data for a 2x3x2 repeated measures design, for 10 participants. The data is in wide format. Here is the link.
+https://github.com/CrumpLab/rstatsmethods/raw/master/vignettes/Stats2/Lab1_data.xlsx
+
+Your task is to convert the data to long format, and store the long-format data in a data.frame or tibble. Print out some of the long-form data in your lab1.Rmd, to show that you did make the appropriate conversion. For extra fun, show two different ways to solve the problem.
+
+If you need to modify the excel by hand to help you solve the problem that is OK, just make a note of it in your lab work.**
+
+
+```{r}
+##Crump class method
+library(readxl)
+wide_data <- read_excel("~/Downloads/Lab1_data.xlsx", col_names = FALSE)
+library(tidyr)
+#add missing labels on first and second row
+wide_data[1, 3:7] <- 'Noisy'
+wide_data[1, 9:13] <-'Quiet'
+wide_data[2, 3] = 'Morning'
+wide_data[2, 9] = 'Morning'
+wide_data[2, 5] = 'Afternoon'
+wide_data[2, 11] = 'Afternoon'
+wide_data[2, 7] = 'Evening'
+wide_data[2, 13] = 'Evening'
+#use for loops to construct concatenated column names
+one_row_header <- c(2:13)
+for(i in 2:13){
+  one_row_header[i]<-paste(wide_data[1,i],wide_data[2,i],wide_data[3,i], sep="_")}
+replace(one_row_header,1,"Participant")
+##Use concatenated column names
+wide_data2 <- read_xlsx("~/Downloads/Lab1_data.xlsx", skip = 2)
+names(wide_data2)[1:13] <- one_row_header
+names(wide_data2)[1] <- "Participant"
+wide_data2
+##Pivot time!
+library(tidyr)
+long_data <- wide_data2 %>% pivot_longer(
+  cols = 2:13,
+  names_to = c("Loudness","Time","Letter"),
+  names_pattern = "(.*)_(.*)_(.*)",
+  values_to = "DV"
+)
+long_data
+```
+
+```{r}
+##Use melt method found here: https://rdatatable.gitlab.io/data.table/articles/datatable-reshape.html
+library(data.table)
+DT.wide_data2 <- data.table(wide_data2)
+DT.wide_data2 = melt(DT.wide_data2, id.vars = "Participant",
+                measure.vars = c("Noisy_Morning_A", "Noisy_Morning_B", "Noisy_Afternoon_A", "Noisy_Afternoon_B", "Noisy_Evening_A", "Noisy_Evening_B", "Quiet_Morning_A", "Quiet_Morning_B", "Quiet_Afternoon_A", "Quiet_Afternoon_B", "Quiet_Evening_A", "Quiet_Evening_B"))
+DT.wide_data2
+```
+That melted for sure! But now we need to re-widen a little bit by parsing out our concatenated columns
+```{r}
+DT.wide_data2$Time <-rep(c("Morning","Afternoon","Evening"), each=20, 2)
+DT.wide_data2$Loudness <-rep(c("Noisy","Quiet"), each=60)
+DT.wide_data2$Letter <-rep(c("A","B"), each=10, 6)
+#delete extraneous column
+DT.wide_data2[,variable:=NULL]
+#rename value and reorder to remain consistent with above
+setnames(DT.wide_data2, "value", "DV")
+setcolorder(DT.wide_data2, c("Participant", "Loudness", "Time", "Letter", "DV"))
+DT.wide_data2
+```
+
