@@ -1,0 +1,15 @@
+navbar:
+  structure:
+    left:  [intro, Rbasics, reference, articles, pkgdowntips, tutorials, news]
+    right: [search, github]
+  components:
+    Rbasics:
+     text: R basics
+     menu:
+     - text: my r basics page
+       href: articles/Rbasics/Rbasics.html
+    pkgdowntips:
+     text: pkgdowntips
+     menu:
+     - text: pkgdowntips
+       href: articles/pkgdowntips/pkgdowntips.html
