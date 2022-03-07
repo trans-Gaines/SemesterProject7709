@@ -1,0 +1,22 @@
+---
+title: "Lab 4"
+author: "Gaines"
+date: "3/7/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+1. Consider the following example data for a between-subjects experiment with two groups, A and B:
+
+```{r}
+example_data <- tibble(Group = rep(c("A","B"), each = 5),
+                       DV = c(2,4,3,5,4,7,6,5,6,7))
+```
+
+Use R to conduct a t.test and ANOVA on this data. Then use R to prove that the results of both analyses are the same. For example, prove that the p-values are the same, and prove that the F-value and T-value are related. (3 points)
+
+2. Look at the lab on ANOVA that I wrote for our undergraduate statistics OER lab manual https://crumplab.github.io/statisticsLab/lab-8-one-way-anova.html. That lab shows an example of obtaining data from a published paper in psych science where a one-factor ANOVA was used as a part of the analysis. Load the data, conduct the ANOVA, report a ggplot of the means, and use papaja to help you write a short results section reporting the ANOVA result. (3 points).
