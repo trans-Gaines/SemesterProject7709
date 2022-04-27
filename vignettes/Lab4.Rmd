@@ -12,11 +12,64 @@ knitr::opts_chunk$set(echo = TRUE)
 ## R Markdown
 1. Consider the following example data for a between-subjects experiment with two groups, A and B:
 
-```{r}
 example_data <- tibble(Group = rep(c("A","B"), each = 5),
                        DV = c(2,4,3,5,4,7,6,5,6,7))
+                       
+Use R to conduct a t.test and ANOVA on this data. Then use R to prove that the results of both analyses are the same. For example, prove that the p-values are the same, and prove that the F-value and T-value are related. (3 points)
+```{r}
+library(tidyverse)
+example_data <- tibble(Group = rep(c("A","B"), each = 5),
+                       DV = c(2,4,3,5,4,7,6,5,6,7))
+t_object <- t.test(DV~Group, data = example_data, var.equal=TRUE)
+aov_object <- aov(DV~Group, data=example_data)
+
+class(t_object)
+class(aov_object)
+print(t_object)
+sum.aov <- summary(aov_object)
+##are f values and p values the same?
+round(t_object$p.value, digits = 10) == round(sum.aov[[1]]$'Pr(>F)'[1], digits = 10)
+##are the F and T values the same?
+round(((t_object$statistic)^2), digits = 10) == round((sum.aov[[1]]$'F value'[1]), digits = 10)
 ```
 
-Use R to conduct a t.test and ANOVA on this data. Then use R to prove that the results of both analyses are the same. For example, prove that the p-values are the same, and prove that the F-value and T-value are related. (3 points)
+```{r}
+#explore how to use papaja to report analysis using example data
+library(papaja)
+apa_print_out <- papaja::apa_print(aov_object)
+apa_print_out$estimate
+apa_print_out$full_result
+```
+The main effect of the group was significant, `r apa_print_out$full_result`
+
 
 2. Look at the lab on ANOVA that I wrote for our undergraduate statistics OER lab manual https://crumplab.github.io/statisticsLab/lab-8-one-way-anova.html. That lab shows an example of obtaining data from a published paper in psych science where a one-factor ANOVA was used as a part of the analysis. Load the data, conduct the ANOVA, report a ggplot of the means, and use papaja to help you write a short results section reporting the ANOVA result. (3 points).
+
+```{r}
+library(data.table)
+library(papaja)
+##Get data
+
+library(readr)
+
+all_data <- read_csv('https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv')
+all_data <- data.table(all_data)
+all_data$Condition <- as.factor(all_data$Condition)
+levels(all_data$Condition) <- c("Control",
+                                "Reactivation+Tetris", 
+                                "Tetris_only",
+                                "Reactivation_only")
+summary(aov(Days_One_to_Seven_Number_of_Intrusions ~ Condition, all_data))
+aov_object_tetris <- aov(Days_One_to_Seven_Number_of_Intrusions ~ Condition, all_data)
+aov_object_tetris_print <- papaja::apa_print(aov_object_tetris)
+```
+
+
+The effect of weird ttetris therapy was significant, `r aov_object_tetris_print$full_result`
+
+```{r}
+ggplot(all_data, aes(x=Condition, 
+                     y=Days_One_to_Seven_Number_of_Intrusions, 
+                     fill = Condition))+
+  geom_bar(stat="summary", fun = "mean")
+```

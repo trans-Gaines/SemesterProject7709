@@ -4,6 +4,11 @@ pkgdown_sha: ~
 articles:
   Lab1: Lab1.html
   Lab2: Lab2.html
+  Lab4: Lab4.html
+  Lab6: Lab6.html
+  Lab7: Lab7.html
+  Lab8: Lab8.html
   RBasics: RBasics/RBasics.html
-last_built: 2022-03-02T16:41Z
+  lab5: lab5.html
+last_built: 2022-04-27T15:28Z
 
