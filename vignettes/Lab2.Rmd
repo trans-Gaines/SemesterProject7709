@@ -52,5 +52,32 @@ Imagine Slamecka had included a third independent variable that also had three l
 
 Use R to create a dataframe to represent predictions for this new 3x3x3 design. Then use ggplot and facet wrapping to show predicted means for each condition. As a hint, I have provided a drawing and I expect your ggplot graph will look something like this drawing.
 
-
+```{r}
+new_data <- tibble(reward = rep(c("A:0","B:50","C:1000000"), each = 9),
+                   practice = rep(rep(c(2,4,8), each = 3),3),
+                   distraction = as.factor(rep(c(0,4,8),9)),
+                   recall = c(5,3,1,
+                              6,4,2,
+                              7,5,3,
+                              10,8,6,
+                              11,9,7,
+                              12,10,8,
+                              15,13,11,
+                              16,14,12,
+                              17,15,13
+                              )
+                   )
+ggplot(new_data,aes(x=practice,
+                    group = distraction,
+                    y=recall,
+                    shape=distraction))+
+  geom_line()+
+  geom_point()+
+  theme_classic()+
+  xlab("Number of interpolated lists")+
+  ylab("Number of words correct")+
+  scale_y_continuous(breaks=c(0,5,10,15,20), limits=c(0,20))+
+  scale_x_continuous(breaks=c(2,4,8))+
+  facet_wrap(~reward)
+```
 

@@ -65,7 +65,7 @@ aov_object_tetris_print <- papaja::apa_print(aov_object_tetris)
 ```
 
 
-The effect of weird ttetris therapy was significant, `r aov_object_tetris_print$full_result`
+The effect of weird tetris therapy was significant, `r aov_object_tetris_print$full_result`
 
 ```{r}
 ggplot(all_data, aes(x=Condition, 

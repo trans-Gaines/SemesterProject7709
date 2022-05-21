@@ -1,0 +1,246 @@
+---
+title: "lab9"
+author: "Gaines"
+date: "5/2/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1. Create an R script that can generate simulated data for the following repeated measures design. (2 points)
+A. The dependent variable is assumed to come from a normal distribution with mean = 0 and standard deviation = 1.
+B. There is one repeated measures factor with 5 levels (Down1, Down2, Control, Up1, Up2). The control group is assumed to have no effect. The Down1 and Down2 levels shift the mean down by 1 and 2 standard deviations, respectively. The Up1 and Up2 levels shift the mean up by 1 and 2 standard deviations, respectively.
+C. There are 6 subjects in the experiment, and they are each measured once in each condition. The 6 subjects are assumed to be different from one another (e.g., they will have different baseline means in the control condition), but they will all be influenced by the IV in the exact same way (e.g., no interaction).
+
+```{r}
+library(tidyverse)
+###My method-not a function to create sim data
+##Create Pool of Control Condition Scores and Randomize Modest Shifts per Subject
+randomshift <- rnorm(100,0,.1)
+subject1 <-rnorm(1000,0,1)+sample(randomshift,size =1)
+subject2 <-rnorm(1000,0,1)+sample(randomshift,size =1)
+subject3 <-rnorm(1000,0,1)+sample(randomshift,size =1)
+subject4 <-rnorm(1000,0,1)+sample(randomshift,size =1)
+subject5 <-rnorm(1000,0,1)+sample(randomshift,size =1)
+subject6 <-rnorm(1000,0,1)+sample(randomshift,size =1)
+##Create Dataframe
+SimulatedRepMeasures <- tribble(~"Subject", ~"Down1", ~"Down2", ~"Control", ~"Up1", ~"Up2", 
+        "s1", sample(subject1,1)-.2, sample(subject1,1)-.1, sample(subject1,1),sample(subject1,1)+.1, sample(subject1,1)+.2,
+        "s2", sample(subject2,1)-.2, sample(subject2,1)-.1, sample(subject2,1),sample(subject2,1)+.1, sample(subject2,1)+.2,
+        "s3", sample(subject3,1)-.2, sample(subject3,1)-.1, sample(subject3,1),sample(subject3,1)+.1, sample(subject3,1)+.2,
+        "s4", sample(subject4,1)-.2, sample(subject4,1)-.1, sample(subject4,1),sample(subject4,1)+.1, sample(subject4,1)+.2,
+        "s5",sample(subject5,1)-.2, sample(subject5,1)-.1, sample(subject5,1),sample(subject5,1)+.1, sample(subject5,1)+.2,
+        "s6",sample(subject6,1)-.2, sample(subject6,1)-.1, sample(subject6,1),sample(subject6,1)+.1, sample(subject6,1)+.2,) 
+```
+
+```{r}
+pvalues1 <- 1:1000
+for (i in 1:1000) {
+##Create Dataframe
+SimulatedRepMeasures <- tribble(~"Subject", ~"Down2", ~"Down1", ~"Control", ~"Up1", ~"Up2", 
+        "s1", sample(subject1,1)-2, sample(subject1,1)-1, sample(subject1,1),sample(subject1,1)+1, sample(subject1,1)+2,
+        "s2", sample(subject2,1)-2, sample(subject2,1)-1, sample(subject2,1),sample(subject2,1)+1, sample(subject2,1)+2,
+        "s3", sample(subject3,1)-2, sample(subject3,1)-1, sample(subject3,1),sample(subject3,1)+1, sample(subject3,1)+2,
+        "s4", sample(subject4,1)-2, sample(subject4,1)-1, sample(subject4,1),sample(subject4,1)+1, sample(subject4,1)+2,
+        "s5",sample(subject5,1)-2, sample(subject5,1)-1, sample(subject5,1),sample(subject5,1)+1, sample(subject5,1)+2,
+        "s6",sample(subject6,1)-2, sample(subject6,1)-1, sample(subject6,1),sample(subject6,1)+1, sample(subject6,1)+2,) 
+# convert to long
+SimulatedRepMeasures <- pivot_longer(SimulatedRepMeasures,
+                   cols = !Subject,
+                   names_to = "IV",
+                   values_to = "Latency")
+
+# Convert IVs to factors
+SimulatedRepMeasures <- SimulatedRepMeasures %>%
+  mutate(Subject = as.factor(Subject),
+         IV = as.factor(IV))
+# conduct ANOVA, note the addition of the error term in the formula
+aov_out <- aov(Latency ~ IV + Error(Subject), data=SimulatedRepMeasures)
+aov_out_sum <- summary(aov_out)
+pvalues1[i] <-unlist(aov_out_sum[[2]])[[9]]
+}
+positives1 <- pvalues1[pvalues1<0.05]
+length(positives1)/length(pvalues1)
+```
+
+`r length(positives1)/length(pvalues1)*100`% of the time would the result be significant when the conditions are 1 standard deviation different. 
+
+
+```{r}
+###Forloop approach via lab solution (could not get sapply function approach from class to work)
+save_p <- c()
+for( i in 1:1000){
+
+sim_data <- tibble(
+  subjects = rep(1:6,each=5),
+  IV = rep(c("Down2","Down1","Control","Up1","Up2"),6),
+  DV = rnorm(6*5,c(-2,-1,0,1,2),1)
+) %>%
+  mutate(DV = DV+rep(rnorm(6,0,1), each=5))
+
+sim_data$IV <- factor(sim_data$IV, levels = c("Down2","Down1","Control","Up1","Up2"))
+
+sim_data$subjects <- as.factor(sim_data$subjects)
+
+aov_out <- summary(aov(DV ~ IV + Error(subjects), sim_data))
+save_p[i] <- aov_out[2]$`Error: Within`[[1]]$`Pr(>F)`[1]
+}
+
+length(save_p[save_p < .05])/1000
+
+```
+`r (length(save_p[save_p < .05])/1000)*100`% of the time would the result be significant when the conditions are 1 standard deviation different. 
+```{r}
+pvalues2 <- 1:1000
+for (i in 1:1000) {
+##Create Dataframe
+SimulatedRepMeasures <- tribble(~"Subject", ~"Down2", ~"Down1", ~"Control", ~"Up1", ~"Up2", 
+        "s1", sample(subject1,1)-.2, sample(subject1,1)-.1, sample(subject1,1),sample(subject1,1)+.1, sample(subject1,1)+.2,
+        "s2", sample(subject2,1)-.2, sample(subject2,1)-.1, sample(subject2,1),sample(subject2,1)+.1, sample(subject2,1)+.2,
+        "s3", sample(subject3,1)-.2, sample(subject3,1)-.1, sample(subject3,1),sample(subject3,1)+.1, sample(subject3,1)+.2,
+        "s4", sample(subject4,1)-.2, sample(subject4,1)-.1, sample(subject4,1),sample(subject4,1)+.1, sample(subject4,1)+.2,
+        "s5",sample(subject5,1)-.2, sample(subject5,1)-.1, sample(subject5,1),sample(subject5,1)+.1, sample(subject5,1)+.2,
+        "s6",sample(subject6,1)-.2, sample(subject6,1)-.1, sample(subject6,1),sample(subject6,1)+.1, sample(subject6,1)+.2,) 
+#convert to long
+SimulatedRepMeasures <- pivot_longer(SimulatedRepMeasures,
+                   cols = !Subject,
+                   names_to = "IV",
+                   values_to = "Latency")
+
+#Convert IVs to factors
+SimulatedRepMeasures <- SimulatedRepMeasures %>%
+  mutate(Subject = as.factor(Subject),
+         IV = as.factor(IV))
+#conduct ANOVA, note the addition of the error term in the formula
+aov_out <- aov(Latency ~ IV + Error(Subject), data=SimulatedRepMeasures)
+aov_out_sum <- summary(aov_out)
+pvalues2[i] <-unlist(aov_out_sum[[2]])[[9]]
+}
+positives2 <- pvalues2[pvalues2< 0.05]
+length(positives2)/length(pvalues2)
+```
+
+Only `r length(positives2)/length(pvalues2)*100`% of the time would the result be significant when the conditions are .1 standard deviation different. 
+
+3. Demonstrate that the Godden and Baddeley example data from the textbook (19.5), which used a 2x2 repeated measures design, can be be analyzed with one-sample t-tests to return the same results. Specifically, show the one-sample t-tests for each main effect and the interaction. (2 points)
+
+```{r}
+library(dplyr)
+#construct dataset
+godden_baddeley <- tribble(~Subjects,~LearningPlace,~TestingPlace,~Recall,
+        "s1","OnLand","OnLand",34,
+        "s2","OnLand","OnLand",37,
+        "s3","OnLand","OnLand",27,
+        "s4","OnLand","OnLand",43,
+        "s5","OnLand","OnLand",44,
+        "s1","OnLand","UnderSea",18,
+        "s2","OnLand","UnderSea",21,
+        "s3","OnLand","UnderSea",25,
+        "s4","OnLand","UnderSea",37,
+        "s5","OnLand","UnderSea",34,
+        "s1","UnderSea","OnLand",14,
+        "s2","UnderSea","OnLand",21,
+        "s3","UnderSea","OnLand",31,
+        "s4","UnderSea","OnLand",27,
+        "s5","UnderSea","OnLand",32,
+        "s1","UnderSea","UnderSea",22,
+        "s2","UnderSea","UnderSea",25,
+        "s3","UnderSea","UnderSea",33,
+        "s4","UnderSea","UnderSea",33,
+        "s5","UnderSea","UnderSea",42
+        )
+#convert IVs to factors
+godden_baddeley <- godden_baddeley %>%
+  mutate(Subjects = as.factor(Subjects),
+         LearningPlace = as.factor(LearningPlace),
+         TestingPlace = as.factor(TestingPlace))
+# run ANOVA
+aov_out <- aov(Recall ~ LearningPlace*TestingPlace + Error(Subjects/(LearningPlace*TestingPlace)), godden_baddeley)
+gbAnovaTable<-summary(aov_out)
+gbAnovaTable
+
+#main effect of learning place effect
+learning_place_means <- godden_baddeley %>%
+  group_by(Subjects,LearningPlace) %>%
+  summarize(mean_recall = mean(Recall))
+  
+Learning_land <- learning_place_means %>%
+  filter(LearningPlace == "OnLand") %>%
+  select(mean_recall)
+
+Learning_sea <- learning_place_means %>%
+  filter(LearningPlace == "UnderSea") %>%
+  select(mean_recall)
+  
+t.test(Learning_land$mean_recall - Learning_sea$mean_recall, mu=0)
+
+# main effect of testing place
+
+testing_place_means <- godden_baddeley %>%
+  group_by(Subjects,TestingPlace) %>%
+  summarize(mean_recall = mean(Recall))
+
+Testing_land <- testing_place_means %>%
+  filter(TestingPlace == "OnLand") %>%
+  select(mean_recall)
+
+Testing_sea <- testing_place_means %>%
+  filter(TestingPlace == "UnderSea") %>%
+  select(mean_recall)
+
+t.test(Testing_land$mean_recall - Testing_sea$mean_recall, mu=0)
+
+## interaction
+
+LL <- godden_baddeley %>%
+  filter(LearningPlace == "OnLand",
+         TestingPlace == "OnLand") %>%
+  pull(Recall)
+
+LS <- godden_baddeley %>%
+  filter(LearningPlace == "OnLand",
+         TestingPlace == "UnderSea") %>%
+  pull(Recall)
+
+LL - LS
+
+SL <- godden_baddeley %>%
+  filter(LearningPlace == "UnderSea",
+         TestingPlace == "OnLand") %>%
+  pull(Recall)
+
+SS <- godden_baddeley %>%
+  filter(LearningPlace == "UnderSea",
+         TestingPlace == "UnderSea") %>%
+  pull(Recall)
+
+t.test((LL - LS) - (SL - SS), mu=0)
+```
+
+The p value for the main effect of learning place in the anova was `r unlist(gbAnovaTable[[2]])[[9]]` compared to a p value found with a paired t test of `r t.test(Learning_land$mean_recall - Learning_sea$mean_recall, mu=0)$p.value`. 
+
+The p value for the main effect of learning place in the anova was `r unlist(gbAnovaTable[[3]])[[9]]` compared to a p value found with a paired t test of `r t.test(Testing_land$mean_recall - Testing_sea$mean_recall, mu=0)$p.value`. 
+
+The p value for the interaction effect of learning place and testing place was `r unlist(gbAnovaTable[[4]])[[9]]` compared to a p value found with a paired t test of `r t.test((LL - LS) - (SL - SS), mu=0)$p.value`.
+
+We successfully reproduced the ANOVA 2x2 with individual t-tests.
+
+Bonus Points
+
+These bonus questions are about the sphericity concept, and they will involve modifying the example data from the textbook (same as used in concept sectdion 1). The data is reprinted here for your convenience:
+
+sphericity <- tribble(~S, ~a1, ~a2, ~a3, ~a4,
+        "s1",76,64,34,26,
+        "s2",60,48,46,30,
+        "s3",58,34,32,28,
+        "s4",46,46,32,28,
+        "s5",30,18,36,28
+        ) 
+4. Create a line plot showing how each of the 5 subjects perform across the levels of the IV. Discuss how the line plot visually shows the sphericity problem in the data (1 point)
+
+5. Modify the above data to remove the sphericity problem. Specifically, ensure that all subjects are different from another (there overall means are different), and that the IV has the same effect for each level and each subject (no interaction). Then, plot the new data and discuss how the graph shows the sphericity problem has been removed. (1 point)
+
+6. Calculate the Greenhouse-Geisser estimate of epsilon for your modified data to demonstrate you have removed the sphericity problem. (1 point)
+

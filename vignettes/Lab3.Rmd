@@ -1,0 +1,12 @@
+---
+title: "Lab3"
+author: "Gaines"
+date: "5/16/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1.The problem for this week is to develop a little bit of content (tutorial material) that could be added to this lab. (6 points)

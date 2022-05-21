@@ -19,17 +19,17 @@ df1 <- data.frame(A = c("A1", "A1", "A2", "A2"),
 A. create a ggplot2 figure that depicts the expected results from this design (2 points)
 ```{r} 
 ggplot(df1, aes(y=dv,x=B, color=A))+
-  geom_point()+
-  geom_line()
+  geom_point(aes(group=A))+
+  geom_line(aes(group=A))
 ```
 
 Conduct simulation-based power analyses to answer the questions.
 
 B. How many subjects are needed to detect the main effect of A with power = .8? (2 points)
 ```{r}
-# N per group
+# Guessing and Checking N per group
 N <- 60
-
+#Actual Simulation Based Power Analysis
 A_pvalue <- c()
 B_pvalue <- c()
 AB_pvalue <- c()
@@ -56,7 +56,7 @@ In a simulation with 60 participants per group (240 total participants) we see >
 C. How many subjects are needed to detect the interaction effect with power = .8? (2 points)
 ```{r}
 # N per group
-N <- 500
+N <- 505
 
 A_pvalue <- c()
 B_pvalue <- c()
@@ -79,7 +79,35 @@ for(i in 1:1000){
 
 length(AB_pvalue[AB_pvalue<0.05])/1000
 ```
-With 500 subjects per group (2000 subjects total) we are approximately 80% powered to detect an effect of the interaction.
+With 505 subjects per group (2020 subjects total) we are approximately 80% powered to detect an effect of the interaction.
 
 Bonus point question:
 B1. Create a power curve showing how power for the interaction effect in this example is influenced by number of subjects. Choose a range of N from 25 to 800 (per cell) and run a simulation-based power analysis for increments of 25 subjects. Then plot the results using ggplot2 (2 points)
+
+```{r}
+# N per group
+N <- (seq(25,800,by=25))
+percentpowered<-c()
+for(x in 1:length(N)){
+  N2 <- N[x]
+  AB_pvalue <- c()
+  for(i in 1:1000){
+     sim_df <- tibble(
+      IVA = rep(rep(c("1","2"), each=2),N2),
+      IVB = rep(rep(c("1","2"), 2),N2),
+      DV = rnorm(4*N2,c(0,0,.5,.25),1)
+    )
+  aov_results <- summary(aov(DV~IVA*IVB, sim_df))
+  AB_pvalue[i]<-aov_results[[1]]$`Pr(>F)`[3]
+  }
+  percentpowered[x]<-length(AB_pvalue[AB_pvalue<0.05])/1000
+}
+plotdata<-tibble(N,percentpowered)
+ggplot(plotdata, aes(x=N,y=percentpowered))+
+  geom_point()+
+  geom_line()+
+  scale_x_continuous(breaks=seq(25,800,50))+
+  scale_y_continuous(breaks=seq(0,1,.1))+
+  geom_hline(yintercept=.8)
+```
+Indicates that we reach sufficient power for interaction effects just after 500 subjects per cell (as described previously in answer C). For loop in a for loop is fun! Originally went down a rabbit hole of trying to use sapply in/around the for loop before seeing it handled this way in lab solution.

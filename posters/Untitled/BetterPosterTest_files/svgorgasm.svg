@@ -1,0 +1,126 @@
+<svg id="sankey_svg" height="1870" width="3740" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<title>Your Diagram Title</title>
+<!-- Generated with SankeyMATIC: 2/4/2022, 3:42:44 PM -->
+
+<g transform="translate(5,18)">
+<g id="sankey_flows">
+<path class="link" d="M30 895.75879C333.75 895.75879 401.25 975.75879 705 975.75879" style="stroke: rgb(107, 174, 214); opacity: 0.55; fill: none; stroke-width: 1602.03;"><title>Had Surgery &#8594; Anorgasmic at 1 Month:
+186</title></path>
+<path class="link" d="M2867 607.22111C3241.85 607.22111 3325.15 607.22111 3700 607.22111" style="stroke: rgb(0, 204, 0); opacity: 0.55; fill: none; stroke-width: 1214.44;"><title>Orgasmic at 1 Year &#8594; Orgasmic &gt;1 Year:
+141</title></path>
+<path class="link" d="M735 1195.39196C1053.15 1195.39196 1123.85 1192.61809 1442 1192.61809" style="stroke: rgb(107, 174, 214); opacity: 0.55; fill: none; stroke-width: 1128.31;"><title>Anorgasmic at 1 Month &#8594; Anorgasmic at 3 Months:
+131</title></path>
+<path class="link" d="M2191 499.55779C2481.7 499.55779 2546.3 499.55779 2837 499.55779" style="stroke: rgb(0, 204, 0); opacity: 0.55; fill: none; stroke-width: 999.116;"><title>Orgasmic at 6 Months &#8594; Orgasmic at 1 Year:
+116</title></path>
+<path class="link" d="M1472 1386.41206C1784.75 1386.41206 1854.25 1376.51043 2167 1376.51043" style="stroke: rgb(107, 174, 214); opacity: 0.55; fill: none; stroke-width: 620.141;"><title>Anorgasmic at 3 Months &#8594; Anorgasmic at 6 Months:
+72</title></path>
+<path class="link" d="M1471 275.61809C1781.5 275.61809 1850.5 275.61809 2161 275.61809" style="stroke: rgb(0, 204, 0); opacity: 0.55; fill: none; stroke-width: 551.236;"><title>Orgasmic at 3 Months &#8594; Orgasmic at 6 Months:
+64</title></path>
+<path class="link" d="M735 402.98995C1052.7 402.98995 1123.3 322.98995 1441 322.98995" style="stroke: rgb(0, 204, 0); opacity: 0.55; fill: none; stroke-width: 456.492;"><title>Anorgasmic at 1 Month &#8594; Orgasmic at 3 Months:
+53</title></path>
+<path class="link" d="M1472 852.40201C1782.05 852.40201 1850.95 775.17588 2161 775.17588" style="stroke: rgb(0, 204, 0); opacity: 0.55; fill: none; stroke-width: 447.879;"><title>Anorgasmic at 3 Months &#8594; Orgasmic at 6 Months:
+52</title></path>
+<path class="link" d="M2197 1441.10842C2487.25 1441.10842 2551.75 1446.05616 2842 1446.05616" style="stroke: rgb(107, 174, 214); opacity: 0.55; fill: none; stroke-width: 318.683;"><title>Anorgasmic at 6 Months &#8594; Anorgasmic at 1 Year:
+37</title></path>
+<path class="link" d="M2197 1174.10339C2485 1174.10339 2549 1106.77889 2837 1106.77889" style="stroke: rgb(0, 204, 0); opacity: 0.55; fill: none; stroke-width: 215.327;"><title>Anorgasmic at 6 Months &#8594; Orgasmic at 1 Year:
+25</title></path>
+<path class="link" d="M2872 1523.57375C3219.85 1523.57375 3297.15 1527.30151 3645 1527.30151" style="stroke: rgb(245, 96, 52); opacity: 0.55; fill: none; stroke-width: 163.648;"><title>Anorgasmic at 1 Year &#8594; Visits Pending, Anorgasmic:
+19</title></path>
+<path class="link" d="M2872 1338.39284C3244.6 1338.39284 3327.4 1266.1206 3700 1266.1206" style="stroke: rgb(0, 204, 0); opacity: 0.55; fill: none; stroke-width: 103.357;"><title>Anorgasmic at 1 Year &#8594; Orgasmic &gt;1 Year:
+12</title></path>
+<path class="link" d="M30 47.37186C334.2 47.37186 401.8 47.37186 706 47.37186" style="stroke: rgb(0, 204, 0); opacity: 0.55; fill: none; stroke-width: 94.7437;"><title>Had Surgery &#8594; Orgasmic at 1 Month:
+11</title></path>
+<path class="link" d="M736 47.37186C1053.25 47.37186 1123.75 47.37186 1441 47.37186" style="stroke: rgb(0, 204, 0); opacity: 0.55; fill: none; stroke-width: 94.7437;"><title>Orgasmic at 1 Month &#8594; Orgasmic at 3 Months:
+11</title></path>
+<path class="link" d="M2197 1643.51545C2462.05 1643.51545 2520.95 1692.4632 2786 1692.4632" style="stroke: rgb(238, 164, 35); opacity: 0.55; fill: none; stroke-width: 86.1307;"><title>Anorgasmic at 6 Months &#8594; No 1 Year Visit:
+10</title></path>
+<path class="link" d="M2816 1692.4632C3161.15 1692.4632 3237.85 1689.19095 3583 1689.19095" style="stroke: rgb(238, 164, 35); opacity: 0.55; fill: none; stroke-width: 86.1307;"><title>No 1 Year Visit &#8594; Lost to Follow Up:
+10</title></path>
+<path class="link" d="M1472 1726.62814C1761.8 1726.62814 1826.2 1766.72651 2116 1766.72651" style="stroke: rgb(238, 164, 35); opacity: 0.55; fill: none; stroke-width: 60.2915;"><title>Anorgasmic at 3 Months &#8594; No 6 Month Visit:
+7</title></path>
+<path class="link" d="M2146 1766.72651C2792.65 1766.72651 2936.35 1762.40201 3583 1762.40201" style="stroke: rgb(238, 164, 35); opacity: 0.55; fill: none; stroke-width: 60.2915;"><title>No 6 Month Visit &#8594; Lost to Follow Up:
+7</title></path>
+<path class="link" d="M2872 1415.91043C3244.6 1415.91043 3327.4 1421.63819 3700 1421.63819" style="stroke: rgb(245, 96, 52); opacity: 0.55; fill: none; stroke-width: 51.6784;"><title>Anorgasmic at 1 Year &#8594; Visits &gt;1 Year, Anorgasmic:
+6</title></path>
+<path class="link" d="M30 1705.38693C310.35 1705.38693 372.65 1825.38693 653 1825.38693" style="stroke: rgb(238, 164, 35); opacity: 0.55; fill: none; stroke-width: 17.2261;"><title>Had Surgery &#8594; No 1 Month Visit:
+2</title></path>
+<path class="link" d="M735 1768.1608C1027.95 1768.1608 1093.05 1806.38693 1386 1806.38693" style="stroke: rgb(238, 164, 35); opacity: 0.55; fill: none; stroke-width: 17.2261;"><title>Anorgasmic at 1 Month &#8594; No 3 Month Visit:
+2</title></path>
+<path class="link" d="M683 1825.38693C1988 1825.38693 2278 1818.38693 3583 1818.38693" style="stroke: rgb(238, 164, 35); opacity: 0.55; fill: none; stroke-width: 17.2261;"><title>No 1 Month Visit &#8594; Lost to Follow Up:
+2</title></path>
+<path class="link" d="M1416 1806.38693C2391.15 1806.38693 2607.85 1801.1608 3583 1801.1608" style="stroke: rgb(238, 164, 35); opacity: 0.55; fill: none; stroke-width: 17.2261;"><title>No 3 Month Visit &#8594; Lost to Follow Up:
+2</title></path>
+</g>
+<g id="sankey_nodes" shape-rendering="crispEdges" style="stroke-width: 0;">
+<g class="node"><rect x="0" y="69.00412" height="1714" width="30" id="r12" class="for_r12" style="fill: rgb(49, 130, 189); fill-opacity: 1; stroke: rgb(24, 63, 92);" transform="translate(0,-69.00412)"><title>Had Surgery:
+199</title></rect>
+</g>
+<g class="node"><rect x="740" y="40" height="94.74372" width="30" id="r1" class="for_r1" style="fill: rgb(0, 204, 0); fill-opacity: 1; stroke: rgb(0, 99, 0);" transform="translate(-34,-40)"><title>Orgasmic at 1 Month:
+11</title></rect>
+</g>
+<g class="node"><rect x="740" y="174.74372" height="1602.03015" width="30" id="r13" class="for_r13" style="fill: rgb(107, 174, 214); fill-opacity: 1; stroke: rgb(52, 85, 104);" transform="translate(-35,0)"><title>Anorgasmic at 1 Month:
+186</title></rect>
+</g>
+<g class="node"><rect x="1480" y="57.22613" height="551.23618" width="30" id="r2" class="for_r2" style="fill: rgb(0, 204, 0); fill-opacity: 1; stroke: rgb(0, 99, 0);" transform="translate(-39,-57.22613)"><title>Orgasmic at 3 Months:
+64</title></rect>
+</g>
+<g class="node"><rect x="1480" y="648.46231" height="1128.31156" width="30" id="r14" class="for_r14" style="fill: rgb(107, 174, 214); fill-opacity: 1; stroke: rgb(52, 85, 104);" transform="translate(-38,-20)"><title>Anorgasmic at 3 Months:
+131</title></rect>
+</g>
+<g class="node"><rect x="2220" y="1091.44007" height="620.1407" width="30" id="r15" class="for_r15" style="fill: rgb(107, 174, 214); fill-opacity: 1; stroke: rgb(52, 85, 104);" transform="translate(-53,-25)"><title>Anorgasmic at 6 Months:
+72</title></rect>
+</g>
+<g class="node"><rect x="2220" y="52.3245" height="999.11558" width="30" id="r3" class="for_r3" style="fill: rgb(0, 204, 0); fill-opacity: 1; stroke: rgb(0, 99, 0);" transform="translate(-59,-52.3245)"><title>Orgasmic at 6 Months:
+116</title></rect>
+</g>
+<g class="node"><rect x="2960" y="40.27224" height="1214.44221" width="30" id="r4" class="for_r4" style="fill: rgb(0, 204, 0); fill-opacity: 1; stroke: rgb(0, 99, 0);" transform="translate(-123,-40.27224)"><title>Orgasmic at 1 Year:
+141</title></rect>
+</g>
+<g class="node"><rect x="2960" y="1294.71445" height="318.68342" width="30" id="r16" class="for_r16" style="fill: rgb(107, 174, 214); fill-opacity: 1; stroke: rgb(52, 85, 104);" transform="translate(-118,-8)"><title>Anorgasmic at 1 Year:
+37</title></rect>
+</g>
+<g class="node"><rect x="3700" y="1449.47739" height="163.64824" width="30" id="r7" class="for_r7" style="fill: rgb(245, 96, 52); fill-opacity: 1; stroke: rgb(120, 47, 25);" transform="translate(-55,-4)"><title>Visits Pending, Anorgasmic:
+19</title></rect>
+</g>
+<g class="node"><rect x="3700" y="1357.79899" height="51.67839" width="30" id="r6" class="for_r6" style="fill: rgb(245, 96, 52); fill-opacity: 1; stroke: rgb(120, 47, 25);" transform="translate(0,38)"><title>Visits &gt;1 Year, Anorgasmic:
+6</title></rect>
+</g>
+<g class="node"><rect x="3700" y="0" height="1317.79899" width="30" id="r0" class="for_r0" style="fill: rgb(0, 204, 0); fill-opacity: 1; stroke: rgb(0, 99, 0);" transform="translate(0,0)"><title>Orgasmic &gt;1 Year:
+153</title></rect>
+</g>
+<g class="node"><rect x="3700" y="1653.12563" height="180.87437" width="30" id="r5" class="for_r5" style="fill: rgb(238, 164, 35); fill-opacity: 1; stroke: rgb(116, 80, 17);" transform="translate(-117,-7)"><title>Lost to Follow Up:
+21</title></rect>
+</g>
+<g class="node"><rect x="1480" y="1816.77387" height="17.22613" width="30" id="r10" class="for_r10" style="fill: rgb(238, 164, 35); fill-opacity: 1; stroke: rgb(116, 80, 17);" transform="translate(-94,-19)"><title>No 3 Month Visit:
+2</title></rect>
+</g>
+<g class="node"><rect x="740" y="1816.77387" height="17.22613" width="30" id="r11" class="for_r11" style="fill: rgb(238, 164, 35); fill-opacity: 1; stroke: rgb(116, 80, 17);" transform="translate(-87,0)"><title>No 1 Month Visit:
+2</title></rect>
+</g>
+<g class="node"><rect x="2960" y="1653.39787" height="86.13065" width="30" id="r8" class="for_r8" style="fill: rgb(238, 164, 35); fill-opacity: 1; stroke: rgb(116, 80, 17);" transform="translate(-174,-4)"><title>No 1 Year Visit:
+10</title></rect>
+</g>
+<g class="node"><rect x="2220" y="1751.58078" height="60.29146" width="30" id="r9" class="for_r9" style="fill: rgb(238, 164, 35); fill-opacity: 1; stroke: rgb(116, 80, 17);" transform="translate(-104,-15)"><title>No 6 Month Visit:
+7</title></rect>
+</g>
+</g>
+<g id="sankey_labels" style="font-family: sans-serif; font-size: 52px; font-weight: 400; fill: rgb(0, 0, 0);">
+<text text-anchor="end" x="3694" y="658.8995" dy=".35em" class="for_r0" transform="translate(0,0)">Orgasmic &gt;1 Year: 153</text>
+<text text-anchor="end" x="734" y="87.37186" dy=".35em" class="for_r1" transform="translate(-34,-40)">Orgasmic at 1 Month: 11</text>
+<text text-anchor="end" x="1474" y="332.84422" dy=".35em" class="for_r2" transform="translate(-39,-57.22613)">Orgasmic at 3 Months: 64</text>
+<text text-anchor="end" x="2214" y="551.88229" dy=".35em" class="for_r3" transform="translate(-59,-52.3245)">Orgasmic at 6 Months: 116</text>
+<text text-anchor="end" x="2954" y="647.49335" dy=".35em" class="for_r4" transform="translate(-123,-40.27224)">Orgasmic at 1 Year: 141</text>
+<text text-anchor="end" x="3694" y="1743.56281" dy=".35em" class="for_r5" transform="translate(-117,-7)">Lost to Follow Up: 21</text>
+<text text-anchor="end" x="3694" y="1383.63819" dy=".35em" class="for_r6" transform="translate(0,38)">Visits &gt;1 Year, Anorgasmic: 6</text>
+<text text-anchor="end" x="3694" y="1531.30151" dy=".35em" class="for_r7" transform="translate(-55,-4)">Visits Pending, Anorgasmic: 19</text>
+<text text-anchor="end" x="2954" y="1696.4632" dy=".35em" class="for_r8" transform="translate(-174,-4)">No 1 Year Visit: 10</text>
+<text text-anchor="end" x="2214" y="1781.72651" dy=".35em" class="for_r9" transform="translate(-104,-15)">No 6 Month Visit: 7</text>
+<text text-anchor="end" x="1474" y="1825.38693" dy=".35em" class="for_r10" transform="translate(-94,-19)">No 3 Month Visit: 2</text>
+<text text-anchor="end" x="734" y="1825.38693" dy=".35em" class="for_r11" transform="translate(-87,0)">No 1 Month Visit: 2</text>
+<text text-anchor="end" x="-6" y="926.00412" dy=".35em" class="for_r12" transform="translate(0,-69.00412)">Had Surgery: 199</text>
+<text text-anchor="end" x="734" y="975.75879" dy=".35em" class="for_r13" transform="translate(-35,0)">Anorgasmic at 1 Month: 186</text>
+<text text-anchor="end" x="1474" y="1212.61809" dy=".35em" class="for_r14" transform="translate(-38,-20)">Anorgasmic at 3 Months: 131</text>
+<text text-anchor="end" x="2214" y="1401.51043" dy=".35em" class="for_r15" transform="translate(-53,-25)">Anorgasmic at 6 Months: 72</text>
+<text text-anchor="end" x="2954" y="1454.05616" dy=".35em" class="for_r16" transform="translate(-118,-8)">Anorgasmic at 1 Year: 37</text>
+</g>
+</g></svg>
