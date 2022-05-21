@@ -62,10 +62,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/LAB%209.html">lab9</a>
+    </li>
+    <li>
       <a href="../articles/Lab1.html">Lab1</a>
     </li>
     <li>
       <a href="../articles/Lab2.html">Lab2</a>
+    </li>
+    <li>
+      <a href="../articles/Lab3.html">Lab3</a>
     </li>
     <li>
       <a href="../articles/Lab4.html">Lab 4</a>
@@ -143,17 +149,15 @@
 <p>A. create a ggplot2 figure that depicts the expected results from this design (2 points)</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">df1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">dv</span>,x<span class="op">=</span><span class="va">B</span>, color<span class="op">=</span><span class="va">A</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## geom_path: Each group consists of only one observation. Do you need to adjust</span>
-<span class="co">## the group aesthetic?</span></code></pre>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>group<span class="op">=</span><span class="va">A</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>group<span class="op">=</span><span class="va">A</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="Lab8_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 <p>Conduct simulation-based power analyses to answer the questions.</p>
 <p>B. How many subjects are needed to detect the main effect of A with power = .8? (2 points)</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># N per group</span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Guessing and Checking N per group</span>
 <span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">60</span>
-
+<span class="co">#Actual Simulation Based Power Analysis</span>
 <span class="va">A_pvalue</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">B_pvalue</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">AB_pvalue</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>
@@ -177,9 +181,9 @@
 <pre><code><span class="co">## [1] 0.814</span></code></pre>
 <p>In a simulation with 60 participants per group (240 total participants) we see &gt;80% power.</p>
 <p>C. How many subjects are needed to detect the interaction effect with power = .8? (2 points)</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># N per group</span>
-<span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">500</span>
+<span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">505</span>
 
 <span class="va">A_pvalue</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">B_pvalue</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>
@@ -201,9 +205,35 @@
 <span class="op">}</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">AB_pvalue</span><span class="op">[</span><span class="va">AB_pvalue</span><span class="op">&lt;</span><span class="fl">0.05</span><span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="fl">1000</span></code></pre></div>
-<pre><code><span class="co">## [1] 0.79</span></code></pre>
-<p>With 500 subjects per group (2000 subjects total) we are approximately 80% powered to detect an effect of the interaction.</p>
+<pre><code><span class="co">## [1] 0.797</span></code></pre>
+<p>With 505 subjects per group (2020 subjects total) we are approximately 80% powered to detect an effect of the interaction.</p>
 <p>Bonus point question: B1. Create a power curve showing how power for the interaction effect in this example is influenced by number of subjects. Choose a range of N from 25 to 800 (per cell) and run a simulation-based power analysis for increments of 25 subjects. Then plot the results using ggplot2 (2 points)</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># N per group</span>
+<span class="va">N</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">25</span>,<span class="fl">800</span>,by<span class="op">=</span><span class="fl">25</span><span class="op">)</span><span class="op">)</span>
+<span class="va">percentpowered</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>
+<span class="kw">for</span><span class="op">(</span><span class="va">x</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
+  <span class="va">N2</span> <span class="op">&lt;-</span> <span class="va">N</span><span class="op">[</span><span class="va">x</span><span class="op">]</span>
+  <span class="va">AB_pvalue</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1000</span><span class="op">)</span><span class="op">{</span>
+     <span class="va">sim_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
+      IVA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1"</span>,<span class="st">"2"</span><span class="op">)</span>, each<span class="op">=</span><span class="fl">2</span><span class="op">)</span>,<span class="va">N2</span><span class="op">)</span>,
+      IVB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1"</span>,<span class="st">"2"</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>,<span class="va">N2</span><span class="op">)</span>,
+      DV <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">4</span><span class="op">*</span><span class="va">N2</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">.5</span>,<span class="fl">.25</span><span class="op">)</span>,<span class="fl">1</span><span class="op">)</span>
+    <span class="op">)</span>
+  <span class="va">aov_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/aov.html" class="external-link">aov</a></span><span class="op">(</span><span class="va">DV</span><span class="op">~</span><span class="va">IVA</span><span class="op">*</span><span class="va">IVB</span>, <span class="va">sim_df</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">AB_pvalue</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">&lt;-</span><span class="va">aov_results</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">`Pr(&gt;F)`</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>
+  <span class="op">}</span>
+  <span class="va">percentpowered</span><span class="op">[</span><span class="va">x</span><span class="op">]</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">AB_pvalue</span><span class="op">[</span><span class="va">AB_pvalue</span><span class="op">&lt;</span><span class="fl">0.05</span><span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="fl">1000</span>
+<span class="op">}</span>
+<span class="va">plotdata</span><span class="op">&lt;-</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="va">N</span>,<span class="va">percentpowered</span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">plotdata</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">N</span>,y<span class="op">=</span><span class="va">percentpowered</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">25</span>,<span class="fl">800</span>,<span class="fl">50</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">.1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_hline</a></span><span class="op">(</span>yintercept<span class="op">=</span><span class="fl">.8</span><span class="op">)</span></code></pre></div>
+<p><img src="Lab8_files/figure-html/unnamed-chunk-5-1.png" width="700"> Indicates that we reach sufficient power for interaction effects just after 500 subjects per cell (as described previously in answer C). For loop in a for loop is fun! Originally went down a rabbit hole of trying to use sapply in/around the for loop before seeing it handled this way in lab solution.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

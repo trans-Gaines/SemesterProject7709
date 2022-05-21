@@ -62,10 +62,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/LAB%209.html">lab9</a>
+    </li>
+    <li>
       <a href="../articles/Lab1.html">Lab1</a>
     </li>
     <li>
       <a href="../articles/Lab2.html">Lab2</a>
+    </li>
+    <li>
+      <a href="../articles/Lab3.html">Lab3</a>
     </li>
     <li>
       <a href="../articles/Lab4.html">Lab 4</a>
@@ -164,6 +170,34 @@
 <li>(3 points) The Slamecka design was a 3x3 design. The practice variable had three levels (2, 4, and 8), and was assumed to increase memory recall with increasing amount of practice. The interpolated learning (IL or distraction) variable had three levels (0, 4, and 8), and was assumed to decrease memory recall with increasing amounts of distraction. Imagine Slamecka had included a third independent variable that also had three levels. This new IV is expected to increase memory recall. For example, maybe the third IV is amount of reward given to subjects (0, 50 dollars, 1 million dollars) for completing the study. As the amount of expected reward is increased, subjects are more motivated so they remember more words.</li>
 </ol>
 <p>Use R to create a dataframe to represent predictions for this new 3x3x3 design. Then use ggplot and facet wrapping to show predicted means for each condition. As a hint, I have provided a drawing and I expect your ggplot graph will look something like this drawing.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">new_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>reward <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A:0"</span>,<span class="st">"B:50"</span>,<span class="st">"C:1000000"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">9</span><span class="op">)</span>,
+                   practice <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">8</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,<span class="fl">3</span><span class="op">)</span>,
+                   distraction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">4</span>,<span class="fl">8</span><span class="op">)</span>,<span class="fl">9</span><span class="op">)</span><span class="op">)</span>,
+                   recall <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">3</span>,<span class="fl">1</span>,
+                              <span class="fl">6</span>,<span class="fl">4</span>,<span class="fl">2</span>,
+                              <span class="fl">7</span>,<span class="fl">5</span>,<span class="fl">3</span>,
+                              <span class="fl">10</span>,<span class="fl">8</span>,<span class="fl">6</span>,
+                              <span class="fl">11</span>,<span class="fl">9</span>,<span class="fl">7</span>,
+                              <span class="fl">12</span>,<span class="fl">10</span>,<span class="fl">8</span>,
+                              <span class="fl">15</span>,<span class="fl">13</span>,<span class="fl">11</span>,
+                              <span class="fl">16</span>,<span class="fl">14</span>,<span class="fl">12</span>,
+                              <span class="fl">17</span>,<span class="fl">15</span>,<span class="fl">13</span>
+                              <span class="op">)</span>
+                   <span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">new_data</span>,<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">practice</span>,
+                    group <span class="op">=</span> <span class="va">distraction</span>,
+                    y<span class="op">=</span><span class="va">recall</span>,
+                    shape<span class="op">=</span><span class="va">distraction</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_classic</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Number of interpolated lists"</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Number of words correct"</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">15</span>,<span class="fl">20</span><span class="op">)</span>, limits<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">8</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">reward</span><span class="op">)</span></code></pre></div>
+<p><img src="Lab2_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

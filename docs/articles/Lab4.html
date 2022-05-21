@@ -62,10 +62,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/LAB%209.html">lab9</a>
+    </li>
+    <li>
       <a href="../articles/Lab1.html">Lab1</a>
     </li>
     <li>
       <a href="../articles/Lab2.html">Lab2</a>
+    </li>
+    <li>
+      <a href="../articles/Lab3.html">Lab3</a>
     </li>
     <li>
       <a href="../articles/Lab4.html">Lab 4</a>
@@ -232,7 +238,7 @@
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">aov_object_tetris</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html" class="external-link">aov</a></span><span class="op">(</span><span class="va">Days_One_to_Seven_Number_of_Intrusions</span> <span class="op">~</span> <span class="va">Condition</span>, <span class="va">all_data</span><span class="op">)</span>
 <span class="va">aov_object_tetris_print</span> <span class="op">&lt;-</span> <span class="fu">papaja</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/papaja/man/apa_print.html" class="external-link">apa_print</a></span><span class="op">(</span><span class="va">aov_object_tetris</span><span class="op">)</span></code></pre></div>
-<p>The effect of weird ttetris therapy was significant, <span class="math inline">\(F(3, 68) = 3.79\)</span>, <span class="math inline">\(\mathit{MSE} = 10.09\)</span>, <span class="math inline">\(p = .014\)</span>, <span class="math inline">\(\hat{\eta}^2_G = .143\)</span></p>
+<p>The effect of weird tetris therapy was significant, <span class="math inline">\(F(3, 68) = 3.79\)</span>, <span class="math inline">\(\mathit{MSE} = 10.09\)</span>, <span class="math inline">\(p = .014\)</span>, <span class="math inline">\(\hat{\eta}^2_G = .143\)</span></p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">all_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Condition</span>, 
                      y<span class="op">=</span><span class="va">Days_One_to_Seven_Number_of_Intrusions</span>, 
