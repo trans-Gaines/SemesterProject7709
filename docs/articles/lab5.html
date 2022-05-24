@@ -2196,14 +2196,14 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># proportion significant simulations</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">save_results</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span> <span class="op">&lt;</span> <span class="fl">.05</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fl">1000</span></code></pre></div>
-<pre><code><span class="co">## [1] 0.914</span></code></pre>
+<pre><code><span class="co">## [1] 0.929</span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># effect_size</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">save_results</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span><span class="op">)</span></code></pre></div>
 <p><img src="lab5_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">save_results</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] 0.05334054</span></code></pre>
+<pre><code><span class="co">## [1] 0.0545427</span></code></pre>
 <p>Ok, now answering lab questions:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span>
@@ -2228,8 +2228,8 @@
 <span class="co"># report the ANOVA</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">aov.out</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##             Df Sum Sq Mean Sq F value Pr(&gt;F)</span>
-<span class="co">## IV           2  1.084  0.5422   0.483  0.622</span>
-<span class="co">## Residuals   27 30.295  1.1220</span></code></pre>
+<span class="co">## IV           2  4.944   2.472   2.124  0.139</span>
+<span class="co">## Residuals   27 31.430   1.164</span></code></pre>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># show a graph</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
@@ -2264,8 +2264,8 @@
 <code class="sourceCode R"><span class="co"># report the ANOVA</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">aov.out</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##             Df Sum Sq Mean Sq F value Pr(&gt;F)  </span>
-<span class="co">## IV           2  7.949   3.974   4.753  0.017 *</span>
-<span class="co">## Residuals   27 22.579   0.836                 </span>
+<span class="co">## IV           2  6.068  3.0342   4.469 0.0211 *</span>
+<span class="co">## Residuals   27 18.331  0.6789                 </span>
 <span class="co">## ---</span>
 <span class="co">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></code></pre>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">

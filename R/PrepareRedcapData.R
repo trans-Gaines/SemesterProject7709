@@ -7,6 +7,7 @@
 #' examples forthcoming
 
 redcap_to_r_data_set <- function(redcap_data_file, redcap_script_file) {
+  #Via Wade R Stats https://www.waderstats.com/rstudio-files/redcap_to_r_data_set/redcap_to_r_data_set.html
   # Read in the data and script file.
   redcap_data <- read.csv(file = redcap_data_file, stringsAsFactors = FALSE)
   redcap_script <- readLines(redcap_script_file)

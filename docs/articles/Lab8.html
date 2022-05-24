@@ -181,7 +181,7 @@
 <span class="op">}</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">A_pvalue</span><span class="op">[</span><span class="va">A_pvalue</span><span class="op">&lt;</span><span class="fl">0.05</span><span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="fl">1000</span></code></pre></div>
-<pre><code><span class="co">## [1] 0.814</span></code></pre>
+<pre><code><span class="co">## [1] 0.831</span></code></pre>
 <p>In a simulation with 60 participants per group (240 total participants) we see &gt;80% power.</p>
 <p>C. How many subjects are needed to detect the interaction effect with power = .8? (2 points)</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -208,7 +208,7 @@
 <span class="op">}</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">AB_pvalue</span><span class="op">[</span><span class="va">AB_pvalue</span><span class="op">&lt;</span><span class="fl">0.05</span><span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="fl">1000</span></code></pre></div>
-<pre><code><span class="co">## [1] 0.795</span></code></pre>
+<pre><code><span class="co">## [1] 0.775</span></code></pre>
 <p>With 505 subjects per group (2020 subjects total) we are approximately 80% powered to detect an effect of the interaction.</p>
 <p>Bonus point question: B1. Create a power curve showing how power for the interaction effect in this example is influenced by number of subjects. Choose a range of N from 25 to 800 (per cell) and run a simulation-based power analysis for increments of 25 subjects. Then plot the results using ggplot2 (2 points)</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">

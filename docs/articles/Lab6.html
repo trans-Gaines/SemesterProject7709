@@ -151,22 +151,22 @@
 <p><img src="Lab6_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">Ahist</span><span class="op">[</span><span class="va">Ahist</span><span class="op">&gt;</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="fl">10000</span></code></pre></div>
-<pre><code><span class="co">## [1] 0.6436</span></code></pre>
-<p>The rate of making a type 1 error in this model for 20 subjects (/trials) is 0.6436 which is approximately equal to the textbook value of .64.</p>
+<pre><code><span class="co">## [1] 0.6353</span></code></pre>
+<p>The rate of making a type 1 error in this model for 20 subjects (/trials) is 0.6353 which is approximately equal to the textbook value of .64.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">A50hist</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="fl">10000</span>,<span class="fl">50</span>,<span class="fl">.05</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">A50hist</span><span class="op">)</span></code></pre></div>
 <p><img src="Lab6_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">A50hist</span><span class="op">[</span><span class="va">A50hist</span><span class="op">&gt;</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="fl">10000</span></code></pre></div>
-<pre><code><span class="co">## [1] 0.9204</span></code></pre>
-<p>The rate of making a type 1 error in this model for 50 subjects (/trials) is 0.9204 which is approximately equal to the textbook value of .92.</p>
+<pre><code><span class="co">## [1] 0.9222</span></code></pre>
+<p>The rate of making a type 1 error in this model for 50 subjects (/trials) is 0.9222 which is approximately equal to the textbook value of .92.</p>
 <p>1b. If the ineffectual experiment was conducted 20 times, and there were four groups, and the experimenter would accept a significant result from any of the orthogonal linear contrasts, what would be the probability of finding a significant result here? (1 point)</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate</a></span><span class="op">(</span><span class="fl">10000</span>,<span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="fl">20</span>,<span class="fl">3</span>,<span class="fl">.05</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">D</span><span class="op">[</span><span class="va">D</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="fl">10000</span></code></pre></div>
-<pre><code><span class="co">## [1] 0.9564</span></code></pre>
-<p>The rate of making a type 1 error in this set up where notably no correction for multiple testing is performed is for 50 subjects (/trials) is 0.9564.</p>
+<pre><code><span class="co">## [1] 0.9531</span></code></pre>
+<p>The rate of making a type 1 error in this set up where notably no correction for multiple testing is performed is for 50 subjects (/trials) is 0.9531.</p>
 <p><strong>The next two questions draw a connection to a technique we have not yet discussed called p-curve analysis (Simonsohn et al., 2014; Wallis, 1942). P-curve analysis is sometimes used for purposes of meta-analyses to determine whether there is “good” evidence for an effect in the literature.</strong></p>
 <p><strong>2. Consider that a researcher publishes a study showing a significant effect, p &lt;. 05; but, in reality the researcher makes a type I error, and the manipulation did not cause any difference. If many other researchers replicated the study, what kind of p-values would they find? Use R to create a sampling distribution of p-values that would be expected in this situation. What shape does this distribution have? (2 points)</strong></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
@@ -182,7 +182,7 @@
 <p><img src="Lab6_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">t_results</span><span class="op">[</span><span class="va">t_results</span><span class="op">&gt;</span><span class="fl">0.05</span><span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="fl">10000</span></code></pre></div>
-<pre><code><span class="co">## [1] 0.674</span></code></pre>
+<pre><code><span class="co">## [1] 0.6687</span></code></pre>
 <p>This looks like an F distribution.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Same as #3, except that we now assume the design has four groups (between-subjects). Assume that group A has a mean that is .5 standard deviations larger than groups B, C, and D. Use R to create a sampling distribution of p-values that would be expected for the linear contrast evaluating the research hypothesis that A &gt; B = C = D. (1 point)</li>
@@ -218,7 +218,7 @@
   <span class="va">omnibus_pvalues</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">save_results</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">`Pr(&gt;F)`</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>
   <span class="va">contrast_pvalues</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">save_results</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">`Pr(&gt;F)`</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>
 <span class="op">}</span></code></pre></div>
-<p>Close to the same! 5.01% of the time you will make type 1 error in this design for omnibus versus 5.32% of time for contrast.</p>
+<p>Close to the same! 4.96% of the time you will make type 1 error in this design for omnibus versus 5.04% of time for contrast.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
