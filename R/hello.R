@@ -15,4 +15,3 @@
 
 
 library(SemesterProject7709)
->pkgdown::build_site()

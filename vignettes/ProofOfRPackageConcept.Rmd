@@ -1,0 +1,40 @@
+---
+title: "ProofOfRPackageConcept"
+author: "Gaines"
+date: "5/24/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(SemesterProject7709.DilationDataProcessing)
+package_loader <- function(x, ...) {
+  if (x %in% rownames(installed.packages()) == FALSE) install.packages(x)
+  library(x, ...)
+}
+packages <- c("knitr", "bookdown", "kableExtra", "DT", "Hmisc", "tidyr", "dplyr", "rlang")
+invisible(sapply(X = packages, FUN = package_loader, character.only = TRUE))
+```
+
+```{r}
+redcap_data <- redcap_to_r_data_set(redcap_data_file = "~/Desktop/Datasets/RetrospectiveSurgeri_DATA_2022-03-01_1528.csv", redcap_script_file = "~/Desktop/Datasets/RetrospectiveSurgeri_R_2022-03-01_1528.r")
+###Visualize in tibble
+redcap_data <- data.frame(redcap_data)
+##My Data Goals specific processing
+#Add person-level trimming value through the event-level rows so that the person and their events are later filtered
+redcap_data  <- redcap_data  %>% fill(original_surgeon, .direction = "down")
+redcap_data  <- redcap_data  %>% fill(original_sx_type, .direction = "down")
+redcap_data  <- redcap_data  %>% fill(nyu_sx_1_date, .direction = "down")
+#Remove People and Their Events Not Meeting Specific Conditions
+redcap_data  <- redcap_data  %>% filter(original_surgeon == "Yes, LCZ + RBL")
+redcap_data  <- redcap_data  %>% filter(original_sx_type == "PIV w/ Peritoneal,")
+redcap_data  <- redcap_data  %>% filter(nyu_sx_1_date < "2021-05-01" )
+```
+
+```{r}
+lastfollowupdataset <- Last_Follow_Up_Metrics(redcap_data, "podfollowup","record_id")
+print("Average Years of Follow Up")
+print(mean(lastfollowupdataset$podfollowup)/365)
+```
+
+

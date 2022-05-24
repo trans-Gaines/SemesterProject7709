@@ -1,11 +1,10 @@
-Package: SemesterProject7709
+Package: SemesterProject7709.DilationDataProcessing
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Data Processing for Dilation in Redcap
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Gaines
+Maintainer: The package maintainer <gainesblasdel@gmail.com>
+Description: This is a package to create functions for data processing I frequently do on person- and event- level data from redcap.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
@@ -13,3 +12,4 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+RoxygenNote: 7.1.2

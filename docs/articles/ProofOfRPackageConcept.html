@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lab3 • SemesterProject7709.DilationDataProcessing</title>
+<title>ProofOfRPackageConcept • SemesterProject7709.DilationDataProcessing</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Lab3">
+<script src="../pkgdown.js"></script><meta property="og:title" content="ProofOfRPackageConcept">
 <meta property="og:description" content="SemesterProject7709.DilationDataProcessing">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -122,19 +122,38 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Lab3</h1>
+      <h1 data-toc-skip>ProofOfRPackageConcept</h1>
                         <h4 data-toc-skip class="author">Gaines</h4>
             
-            <h4 data-toc-skip class="date">5/16/2022</h4>
+            <h4 data-toc-skip class="date">5/24/2022</h4>
       
       
-      <div class="hidden name"><code>Lab3.Rmd</code></div>
+      <div class="hidden name"><code>ProofOfRPackageConcept.Rmd</code></div>
 
     </div>
 
     
     
-<p>1.The problem for this week is to develop a little bit of content (tutorial material) that could be added to this lab. (6 points)</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">redcap_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/redcap_to_r_data_set.html">redcap_to_r_data_set</a></span><span class="op">(</span>redcap_data_file <span class="op">=</span> <span class="st">"~/Desktop/Datasets/RetrospectiveSurgeri_DATA_2022-03-01_1528.csv"</span>, redcap_script_file <span class="op">=</span> <span class="st">"~/Desktop/Datasets/RetrospectiveSurgeri_R_2022-03-01_1528.r"</span><span class="op">)</span>
+<span class="co">###Visualize in tibble</span>
+<span class="va">redcap_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">redcap_data</span><span class="op">)</span>
+<span class="co">##My Data Goals specific processing</span>
+<span class="co">#Add person-level trimming value through the event-level rows so that the person and their events are later filtered</span>
+<span class="va">redcap_data</span>  <span class="op">&lt;-</span> <span class="va">redcap_data</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html" class="external-link">fill</a></span><span class="op">(</span><span class="va">original_surgeon</span>, .direction <span class="op">=</span> <span class="st">"down"</span><span class="op">)</span>
+<span class="va">redcap_data</span>  <span class="op">&lt;-</span> <span class="va">redcap_data</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html" class="external-link">fill</a></span><span class="op">(</span><span class="va">original_sx_type</span>, .direction <span class="op">=</span> <span class="st">"down"</span><span class="op">)</span>
+<span class="va">redcap_data</span>  <span class="op">&lt;-</span> <span class="va">redcap_data</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html" class="external-link">fill</a></span><span class="op">(</span><span class="va">nyu_sx_1_date</span>, .direction <span class="op">=</span> <span class="st">"down"</span><span class="op">)</span>
+<span class="co">#Remove People and Their Events Not Meeting Specific Conditions</span>
+<span class="va">redcap_data</span>  <span class="op">&lt;-</span> <span class="va">redcap_data</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">original_surgeon</span> <span class="op">==</span> <span class="st">"Yes, LCZ + RBL"</span><span class="op">)</span>
+<span class="va">redcap_data</span>  <span class="op">&lt;-</span> <span class="va">redcap_data</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">original_sx_type</span> <span class="op">==</span> <span class="st">"PIV w/ Peritoneal,"</span><span class="op">)</span>
+<span class="va">redcap_data</span>  <span class="op">&lt;-</span> <span class="va">redcap_data</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">nyu_sx_1_date</span> <span class="op">&lt;</span> <span class="st">"2021-05-01"</span> <span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lastfollowupdataset</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Last_Follow_Up_Metrics.html">Last_Follow_Up_Metrics</a></span><span class="op">(</span><span class="va">redcap_data</span>, <span class="st">"podfollowup"</span>,<span class="st">"record_id"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"Average Years of Follow Up"</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "Average Years of Follow Up"</span></code></pre>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">lastfollowupdataset</span><span class="op">$</span><span class="va">podfollowup</span><span class="op">)</span><span class="op">/</span><span class="fl">365</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] 1.17202</span></code></pre>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

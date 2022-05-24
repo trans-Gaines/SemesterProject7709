@@ -28,6 +28,9 @@
     <loc>/articles/Lab8.html</loc>
   </url>
   <url>
+    <loc>/articles/ProofOfRPackageConcept.html</loc>
+  </url>
+  <url>
     <loc>/articles/RBasics/R Basics.html</loc>
   </url>
   <url>
@@ -46,9 +49,15 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/Last_Follow_Up_Metrics.html</loc>
+  </url>
+  <url>
     <loc>/reference/hello.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/redcap_to_r_data_set.html</loc>
   </url>
 </urlset>
